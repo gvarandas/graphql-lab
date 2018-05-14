@@ -1,4 +1,5 @@
 const express = require('express');
+var cors = require('cors');
 const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
 const RandomDie = require('./RandomDie.js');
@@ -22,6 +23,7 @@ var root = {
 };
 
 var app = express();
+app.use(cors());
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
